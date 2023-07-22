@@ -1,0 +1,80 @@
+.login-main-div {
+  background-image: url('https://res.cloudinary.com/dcnuotlhb/image/upload/v1690010159/netfilx_1main_fllalx.png');
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: HK Grotesk;
+}
+.login-logo {
+  width: 180px;
+  height: 52px;
+  margin-left: 40px;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+.login-form {
+  background-color: #0c0b10;
+  border-radius: 8px;
+  padding: 30px;
+  width: 456px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  margin-top: 50px;
+  opacity: 80%;
+}
+.login-head {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0em;
+  align-self: center;
+}
+.label-input {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #ffffff;
+  margin-left: 20px;
+}
+input {
+  background-color: #333333;
+  height: 40px;
+  border-radius: 2px;
+  outline: none;
+  width: 360px;
+  margin-top: 10px;
+  align-self: center;
+  color: #e2e8f0;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.login-button {
+  background-color: #e50914;
+  color: #ffffff;
+  height: 40px;
+  border-radius: 8px;
+  width: 360px;
+  margin-top: 20px;
+  align-self: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+.login-error {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 400;
+}

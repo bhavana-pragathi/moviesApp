@@ -1,0 +1,52 @@
+.home-main-div {
+  background-color: #000000;
+  min-height: 100vh;
+  font-family: HK Grotesk;
+}
+.home-upper-div {
+  background-image: url('https://res.cloudinary.com/dcnuotlhb/image/upload/v1690027071/Imagehome_aig2kk.png');
+  height: 45vh;
+  background-size: cover;
+}
+.home-head {
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+  padding-left: 80px;
+}
+.home-para {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  padding-left: 80px;
+}
+.home-play {
+  font-size: 12px;
+  font-weight: 600px;
+  color: #171f46;
+  background-color: #ffffff;
+  width: 60px;
+  height: 30px;
+  border-radius: 4px;
+  margin-left: 80px;
+  padding: 8px, 24px, 8px, 24px;
+  border: none;
+}
+.home-success-para {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+}
+.list-items {
+  display: flex;
+  list-style-type: none;
+}
+.list-item {
+}
+.li-img {
+  height: 170px;
+  width: 250px;
+}
+.slick-next:before {
+  color: #ffffff;
+}
