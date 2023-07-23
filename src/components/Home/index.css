@@ -1,7 +1,7 @@
 .home-main-div {
-  background-color: #000000;
-  min-height: 100vh;
+  min-height: 110vh;
   font-family: HK Grotesk;
+  background-color: #000000;
 }
 .home-upper-div {
   background-image: url('https://res.cloudinary.com/dcnuotlhb/image/upload/v1690027071/Imagehome_aig2kk.png');
@@ -34,19 +34,45 @@
 }
 .home-success-para {
   color: #ffffff;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
+  padding-top: 30px;
+  padding-left: 30px;
 }
 .list-items {
   display: flex;
   list-style-type: none;
+  flex-wrap: wrap;
 }
 .list-item {
+  outline: none;
 }
 .li-img {
-  height: 170px;
-  width: 250px;
+  height: 120px;
+  width: 200px;
+  margin-left: 40px;
+  border-radius: 8px;
 }
 .slick-next:before {
   color: #ffffff;
+}
+.slick-next:after {
+  color: #ffffff;
+}
+.home-bottom-div {
+  background-color: #000000;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+.footer-div {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 136px;
 }

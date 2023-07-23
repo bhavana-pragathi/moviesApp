@@ -1,0 +1,12 @@
+.icons-div {
+  display: flex;
+}
+.icon-button {
+  background-color: transparent;
+  border: none;
+}
+.contact-us {
+  color: #ffffff;
+  font-size: 10px;
+  text-align: center;
+}

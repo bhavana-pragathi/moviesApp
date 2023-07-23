@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {HiOutlineSearch} from 'react-icons/hi'
 import './index.css'
 
@@ -9,8 +10,12 @@ const Header = () => (
         src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690009709/urzfzliigozcxhv3deem.png"
         alt="website logo"
       />
-      <p className="header-para">Home</p>
-      <p className="header-para">Popular</p>
+      <Link className="link" to="/">
+        <p className="header-para">Home</p>
+      </Link>
+      <Link className="link" to="/popular">
+        <p className="header-para">Popular</p>
+      </Link>
     </div>
     <div className="header-search-div">
       <button testid="searchButton" type="button" className="search-icon">

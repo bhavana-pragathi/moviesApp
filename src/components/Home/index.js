@@ -1,8 +1,10 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
 import Header from '../Header'
+import Footer from '../Footer'
 import FailureView from '../FailureView'
 import './index.css'
 
@@ -15,15 +17,15 @@ const apiConstants = {
 
 const settings = {
   dots: false,
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 1,
+  slidesToScroll: 4,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
       },
     },
@@ -113,7 +115,7 @@ class Home extends Component {
   renderTrendingSuccessView = () => {
     const {trendingData} = this.state
     return (
-      <div>
+      <div className="trending-div">
         <p className="home-success-para">Trending Now</p>
         <Slider {...settings}>
           {trendingData.map(eachItem => {
@@ -132,7 +134,7 @@ class Home extends Component {
   renderOriginalSuccessView = () => {
     const {originalData} = this.state
     return (
-      <div>
+      <div className="original-div">
         <p className="home-success-para">Originals</p>
         <Slider {...settings}>
           {originalData.map(eachItem => {
@@ -150,7 +152,7 @@ class Home extends Component {
 
   renderLoadingView = () => (
     <div className="loader-container" data-testid="loader">
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+      <Loader type="Spinner" color="#0b69ff" height="50" width="50" />
     </div>
   )
 
@@ -185,6 +187,10 @@ class Home extends Component {
   }
 
   render() {
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken === undefined) {
+      return <Redirect to="/login" />
+    }
     return (
       <div className="home-main-div">
         <div className="home-upper-div">
@@ -199,8 +205,13 @@ class Home extends Component {
               Play
             </button>
           </div>
-          {this.renderTrending()}
-          {this.renderOriginals()}
+          <div className="home-bottom-div">
+            {this.renderTrending()}
+            {this.renderOriginals()}
+            <div className="footer-div">
+              <Footer />
+            </div>
+          </div>
         </div>
       </div>
     )
