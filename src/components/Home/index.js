@@ -1,11 +1,10 @@
 import {Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
 import Header from '../Header'
 import Footer from '../Footer'
-import FailureView from '../FailureView'
 import './index.css'
 
 const apiConstants = {
@@ -47,11 +46,48 @@ const settings = {
 }
 
 class Home extends Component {
-  state = {trendingData: [], originalData: [], apiStatus: apiConstants.initial}
+  state = {
+    backdropData: {},
+    trendingData: [],
+    originalData: [],
+    apiStatus: apiConstants.initial,
+  }
 
   componentDidMount = () => {
+    this.getBackdropData()
     this.getTrendingData()
     this.getOriginalData()
+  }
+
+  getBackdropData = async () => {
+    this.setState({apiStatus: apiConstants.inProgress})
+    const apiUrl = 'https://apis.ccbp.in/movies-app/originals'
+    const jwtToken = Cookies.get('jwt_token')
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    }
+    const response = await fetch(apiUrl, options)
+    if (response.ok) {
+      const data = await response.json()
+      const dataLength = data.results.length
+      const random = data.results[Math.floor(Math.random() * dataLength)]
+      const updatedBackdropData = {
+        backdropPath: random.backdrop_path,
+        id: random.id,
+        overView: random.overview,
+        posterPath: random.poster_path,
+        title: random.title,
+      }
+      this.setState({
+        backdropData: {...updatedBackdropData},
+        apiStatus: apiConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiConstants.failure})
+    }
   }
 
   getTrendingData = async () => {
@@ -112,17 +148,41 @@ class Home extends Component {
     }
   }
 
+  renderBackdropSuccessView = () => {
+    const {backdropData} = this.state
+    const {id, title, overView, backdropPath} = backdropData
+    return (
+      <div
+        className="home-upper-div"
+        key={id}
+        backgroundImage={`url(${backdropPath})`}
+      >
+        <h1 className="home-head" key={title}>
+          {title}
+        </h1>
+        <p className="home-para" key={overView}>
+          {overView}
+        </p>
+        <button className="home-play" type="button">
+          Play
+        </button>
+      </div>
+    )
+  }
+
   renderTrendingSuccessView = () => {
     const {trendingData} = this.state
     return (
       <div className="trending-div">
-        <p className="home-success-para">Trending Now</p>
+        <h1 className="home-success-para">Trending Now</h1>
         <Slider {...settings}>
           {trendingData.map(eachItem => {
             const {id, title, posterPath} = eachItem
             return (
               <div className="list-item" key={id}>
-                <img className="li-img" src={posterPath} alt={title} />
+                <Link className="link-item" to={`/movies/${id}`}>
+                  <img className="li-img" src={posterPath} alt={title} />
+                </Link>
               </div>
             )
           })}
@@ -135,13 +195,15 @@ class Home extends Component {
     const {originalData} = this.state
     return (
       <div className="original-div">
-        <p className="home-success-para">Originals</p>
+        <h1 className="home-success-para">Originals</h1>
         <Slider {...settings}>
           {originalData.map(eachItem => {
             const {id, title, posterPath} = eachItem
             return (
               <div className="list-item" key={id}>
-                <img className="li-img" src={posterPath} alt={title} />
+                <Link className="link-item" to={`/movies/${id}`}>
+                  <img className="li-img" src={posterPath} alt={title} />
+                </Link>
               </div>
             )
           })}
@@ -151,12 +213,87 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="loader-container" data-testid="loader">
-      <Loader type="Spinner" color="#0b69ff" height="50" width="50" />
+    <div className="loader-container" testid="loader">
+      <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
     </div>
   )
 
-  renderFailureView = () => <FailureView />
+  renderBackdropFailureView = () => (
+    <div>
+      <img
+        src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690264009/alert-triangle_wrkrgq.png"
+        alt="failure view"
+      />
+      <p className="failure-para">Something went wrong. Please try again</p>
+      <button
+        className="retry-button"
+        type="button"
+        onClick={this.onRetryBackdrop}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderTrendFailureView = () => (
+    <div>
+      <img
+        src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690264009/alert-triangle_wrkrgq.png"
+        alt="failure view"
+      />
+      <p className="failure-para">Something went wrong. Please try again</p>
+      <button
+        className="retry-button"
+        type="button"
+        onClick={this.onRetryTrending}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderOriginalFailureView = () => (
+    <div>
+      <img
+        src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690264009/alert-triangle_wrkrgq.png"
+        alt="failure view"
+      />
+      <p className="failure-para">Something went wrong. Please try again</p>
+      <button
+        className="retry-button"
+        type="button"
+        onClick={this.onRetryOriginal}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  onRetryBackdrop = () => {
+    this.getBackdropData()
+  }
+
+  onRetryTrending = () => {
+    this.getTrendingData()
+  }
+
+  onRetryOriginal = () => {
+    this.getOriginalData()
+  }
+
+  renderBackdrop = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiConstants.success:
+        return this.renderBackdropSuccessView()
+      case apiConstants.failure:
+        return this.renderBackdropFailureView()
+      case apiConstants.inProgress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
+  }
 
   renderTrending = () => {
     const {apiStatus} = this.state
@@ -164,7 +301,7 @@ class Home extends Component {
       case apiConstants.success:
         return this.renderTrendingSuccessView()
       case apiConstants.failure:
-        return this.renderFailureView()
+        return this.renderTrendFailureView()
       case apiConstants.inProgress:
         return this.renderLoadingView()
       default:
@@ -178,7 +315,7 @@ class Home extends Component {
       case apiConstants.success:
         return this.renderOriginalSuccessView()
       case apiConstants.failure:
-        return this.renderFailureView()
+        return this.renderOriginalFailureView()
       case apiConstants.inProgress:
         return this.renderLoadingView()
       default:
@@ -195,16 +332,7 @@ class Home extends Component {
       <div className="home-main-div">
         <div className="home-upper-div">
           <Header />
-          <div>
-            <h1 className="home-head">Super Man</h1>
-            <p className="home-para">
-              Superman is a fictional superhero who first appeared in American
-              comic books published by DC Comics.
-            </p>
-            <button className="home-play" type="button">
-              Play
-            </button>
-          </div>
+          {this.renderBackdrop()}
           <div className="home-bottom-div">
             {this.renderTrending()}
             {this.renderOriginals()}

@@ -1,9 +1,9 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import Footer from '../Footer'
-import FailureView from '../FailureView'
 import './index.css'
 
 const apiConstants = {
@@ -52,23 +52,40 @@ class Popular extends Component {
   renderSuccessView = () => {
     const {popularData} = this.state
     return (
-      <ul>
-        {popularData.map(eachItem => (
-          <li key={eachItem.id}>
-            <img src={eachItem.posterPath} alt={eachItem.title} />
-          </li>
-        ))}
+      <ul className="popular-list-items">
+        {popularData.map(eachItem => {
+          const {id, title, posterPath} = eachItem
+          return (
+            <Link className="link-item" to={`/movies/${id}`}>
+              <li className="popular-item" key={id}>
+                <img className="popular-images" src={posterPath} alt={title} />
+              </li>
+            </Link>
+          )
+        })}
       </ul>
     )
   }
 
   renderLoadingView = () => (
-    <div className="loader-container" data-testid="loader">
-      <Loader type="Spinner" color="#0b69ff" height="50" width="50" />
+    <div className="popular-loader-container" testid="loader">
+      <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
     </div>
   )
 
-  renderFailureView = () => <FailureView />
+  renderFailureView = () => (
+    <div>
+      <img
+        className="failure-img"
+        src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690030924/Failure_fqtq3g.png"
+        alt="failure view"
+      />
+      <p className="failure-para">Something went wrong. Please try again</p>
+      <button className="retry-button" type="button">
+        Try Again
+      </button>
+    </div>
+  )
 
   renderPopular = () => {
     const {apiStatus} = this.state
@@ -86,10 +103,12 @@ class Popular extends Component {
 
   render() {
     return (
-      <div>
+      <div className="popular-div">
         <Header />
         {this.renderPopular()}
-        <Footer />
+        <div className="footer-div">
+          <Footer />
+        </div>
       </div>
     )
   }

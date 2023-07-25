@@ -1,11 +1,10 @@
 .home-main-div {
-  min-height: 110vh;
+  min-height: 136vh;
   font-family: HK Grotesk;
   background-color: #000000;
 }
 .home-upper-div {
-  background-image: url('https://res.cloudinary.com/dcnuotlhb/image/upload/v1690027071/Imagehome_aig2kk.png');
-  height: 45vh;
+  height: 30vh;
   background-size: cover;
 }
 .home-head {
@@ -74,5 +73,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 136px;
+  margin-top: 200px;
+}
+.failure-para {
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.retry-button {
+  font-size: 12px;
+  font-weight: 600px;
+  color: #171f46;
+  background-color: #ffffff;
+  width: 60px;
+  height: 30px;
+  border-radius: 4px;
+  margin-left: 80px;
+  padding: 8px, 24px, 8px, 24px;
+  border: none;
 }
