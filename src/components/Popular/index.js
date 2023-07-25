@@ -56,11 +56,11 @@ class Popular extends Component {
         {popularData.map(eachItem => {
           const {id, title, posterPath} = eachItem
           return (
-            <Link className="link-item" to={`/movies/${id}`}>
-              <li className="popular-item" key={id}>
+            <li className="popular-item" key={id}>
+              <Link className="link-item" to={`/movies/${id}`}>
                 <img className="popular-images" src={posterPath} alt={title} />
-              </li>
-            </Link>
+              </Link>
+            </li>
           )
         })}
       </ul>

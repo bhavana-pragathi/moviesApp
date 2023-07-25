@@ -1,4 +1,104 @@
 .movie-div {
   background-color: #000000;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: HK Grotesk;
+}
+.movie-footer-div {
+  margin-top: 100px;
+  align-self: center;
+}
+.failure-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.failure-para {
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.retry-button {
+  font-size: 10px;
+  font-weight: 600px;
+  color: #171f46;
+  background-color: #ffffff;
+  width: 60px;
+  height: 30px;
+  border-radius: 4px;
+  margin-left: 80px;
+  padding: 8px, 24px, 8px, 24px;
+  border: none;
+}
+.success-div {
+  color: #ffffff;
+}
+
+.genres-div {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 45px;
+  margin-right: 65px;
+  margin-top: 20px;
+}
+.genre-para {
+  color: #94a3b8;
+}
+.genre-item {
+  margin-bottom: 10px;
+}
+.genres-sub-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ul {
+  list-style-type: none;
+}
+.image-div {
+  height: 35vh;
+  background-size: cover;
+  padding-left: 80px;
+}
+.overview {
+  width: 50%;
+}
+.similar-image {
+  height: 170px;
+  width: 250px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.similar-ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.duration-div {
+  display: flex;
+}
+.duration-para {
+  margin-right: 10px;
+}
+.movie-play {
+  font-size: 12px;
+  font-weight: 600px;
+  color: #171f46;
+  background-color: #ffffff;
+  width: 60px;
+  height: 30px;
+  border-radius: 4px;
+  padding: 8px, 24px, 8px, 24px;
+  border: none;
+}
+.similar-div {
+  margin-left: 40px;
+}
+.similar-head {
+  margin-left: 40px;
+  font-size: 25px;
 }

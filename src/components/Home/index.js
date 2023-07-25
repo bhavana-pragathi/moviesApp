@@ -151,21 +151,21 @@ class Home extends Component {
   renderBackdropSuccessView = () => {
     const {backdropData} = this.state
     const {id, title, overView, backdropPath} = backdropData
+    const bgImage = backdropPath
     return (
-      <div
-        className="home-upper-div"
-        key={id}
-        backgroundImage={`url(${backdropPath})`}
-      >
-        <h1 className="home-head" key={title}>
-          {title}
-        </h1>
-        <p className="home-para" key={overView}>
-          {overView}
-        </p>
-        <button className="home-play" type="button">
-          Play
-        </button>
+      <div key={id} style={{backgroundImage: `url(${bgImage})`}}>
+        <Header />
+        <div className="home-upper-div">
+          <h1 className="home-head" key={title}>
+            {title}
+          </h1>
+          <p className="home-para" key={overView}>
+            {overView}
+          </p>
+          <button className="home-play" type="button">
+            Play
+          </button>
+        </div>
       </div>
     )
   }
@@ -331,7 +331,6 @@ class Home extends Component {
     return (
       <div className="home-main-div">
         <div className="home-upper-div">
-          <Header />
           {this.renderBackdrop()}
           <div className="home-bottom-div">
             {this.renderTrending()}
