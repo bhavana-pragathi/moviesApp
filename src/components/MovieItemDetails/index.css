@@ -6,8 +6,9 @@
   font-family: HK Grotesk;
 }
 .movie-footer-div {
-  margin-top: 100px;
+  margin-top: 60px;
   align-self: center;
+  margin-bottom: 30px;
 }
 .failure-div {
   display: flex;
@@ -46,6 +47,7 @@
 }
 .genre-para {
   color: #94a3b8;
+  font-size: 15px;
 }
 .genre-item {
   margin-bottom: 10px;
@@ -59,7 +61,7 @@ ul {
   list-style-type: none;
 }
 .image-div {
-  height: 35vh;
+  height: 45vh;
   background-size: cover;
   padding-left: 80px;
 }

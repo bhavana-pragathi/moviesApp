@@ -1,16 +1,18 @@
 import {Link} from 'react-router-dom'
-import Header from '../Header'
-import Footer from '../Footer'
 import './index.css'
 
 const NotFound = () => (
-  <div>
-    <Header />
-    <h1>Lost Your Way</h1>
+  <div className="not-found-div">
+    <h1 className="not-found-head">Lost Your Way ?</h1>
+    <p className="not-found-para">
+      we are sorry the page you requested could not be found. Please go back to
+      the homepage.
+    </p>
     <Link to="/">
-      <button type="button">Go to Home</button>
+      <button className="not-found-button" type="button">
+        Go to Home
+      </button>
     </Link>
-    <Footer />
   </div>
 )
 

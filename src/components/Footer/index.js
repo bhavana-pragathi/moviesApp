@@ -2,7 +2,7 @@ import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
 import './index.css'
 
 const Footer = () => (
-  <div>
+  <div className="footer-div">
     <div className="icons-div">
       <button className="icon-button" type="button">
         <FaGoogle size={12} color="#ffffff" />

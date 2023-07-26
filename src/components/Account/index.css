@@ -1,0 +1,18 @@
+.account-div {
+  background-color: #000000;
+  min-height: 100vh;
+}
+.account-content {
+  background-color: #ffffff;
+}
+.account-footer-div {
+  background-color: #000000;
+}
+.hr-line {
+  height: 2px;
+  border-style: solid;
+  border-color: #cbd5e1;
+}
+.username-password {
+  display: flex;
+}

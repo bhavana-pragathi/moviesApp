@@ -335,7 +335,7 @@ class Home extends Component {
           <div className="home-bottom-div">
             {this.renderTrending()}
             {this.renderOriginals()}
-            <div className="footer-div">
+            <div className="home-footer-div">
               <Footer />
             </div>
           </div>
