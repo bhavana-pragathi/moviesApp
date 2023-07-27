@@ -1,13 +1,17 @@
 .account-div {
   background-color: #000000;
   min-height: 100vh;
+  font-family: HK Grotesk;
 }
 .account-content {
   background-color: #ffffff;
+  margin-bottom: 100px;
+  padding-left: 90px;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  padding-right: 90px;
 }
-.account-footer-div {
-  background-color: #000000;
-}
+
 .hr-line {
   height: 2px;
   border-style: solid;
@@ -15,4 +19,30 @@
 }
 .username-password {
   display: flex;
+}
+.account-para {
+  color: #94a3b8;
+  margin-right: 20px;
+}
+.premium {
+  margin-right: 10px;
+  color: #1e293b;
+}
+.ultra {
+  border: 1px solid #1e293b;
+  font-size: 12px;
+  height: 20px;
+}
+.premium-ultra {
+  display: flex;
+  align-items: center;
+}
+.logout-button {
+  border: none;
+  background-color: #e50914;
+  color: #ffffff;
+  height: 25px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
 }

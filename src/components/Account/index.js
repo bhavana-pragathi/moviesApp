@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import Footer from '../Footer'
 import MovieContext from '../../context/MovieContext'
+import './index.css'
 
 const Account = props => (
   <MovieContext.Consumer>
@@ -20,28 +21,26 @@ const Account = props => (
             <h1>Account</h1>
             <hr className="hr-line" />
             <div className="username-password">
-              <p>Member ship</p>
+              <p className="account-para">Member ship</p>
               <div>
                 <p>{username}@gmail.com</p>
                 <p>Password: {star}</p>
               </div>
             </div>
             <hr className="hr-line" />
-            <div>
-              <p>Plan details</p>
-              <div>
-                <p>Premium</p>
-                <p>Ultra HD</p>
+            <div className="username-password">
+              <p className="account-para">Plan details</p>
+              <div className="premium-ultra">
+                <p className="premium">Premium</p>
+                <p className="ultra">Ultra HD</p>
               </div>
             </div>
             <hr className="hr-line" />
-            <button type="button" onClick={onLogout}>
+            <button className="logout-button" type="button" onClick={onLogout}>
               Logout
             </button>
           </div>
-          <div className="account-footer-div">
-            <Footer />
-          </div>
+          <Footer />
         </div>
       )
     }}
