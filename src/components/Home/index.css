@@ -1,13 +1,15 @@
 .home-main-div {
-  min-height: 125vh;
+  min-height: 180px;
   font-family: HK Grotesk;
   background-color: #000000;
+  background-size: cover;
 }
 .home-upper-div {
-  height: 40vh;
+  height: 45vh;
   background-size: cover;
   display: flex;
   flex-direction: column;
+  background-repeat: no-repeat;
 }
 .home-head {
   font-size: 40px;
@@ -48,14 +50,17 @@
   flex-wrap: wrap;
 }
 .list-item {
-  outline: none;
+  margin-right: 20px;
 }
 .li-img {
-  height: 120px;
-  width: 200px;
-  margin-left: 40px;
+  height: 150px;
+  width: 250px;
+  margin-left: 20px;
   border-radius: 8px;
+  margin-right: 20px;
+  margin-right: 10px;
 }
+
 .slick-next:before {
   color: #ffffff;
 }
@@ -66,6 +71,7 @@
   background-color: #000000;
   padding-left: 60px;
   padding-right: 60px;
+  min-height: 100vh;
 }
 .home-footer-div {
   margin-top: 80px;

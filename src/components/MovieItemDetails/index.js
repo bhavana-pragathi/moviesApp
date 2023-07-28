@@ -111,87 +111,83 @@ class MovieItemDetails extends Component {
     }
 
     return (
-      <div>
-        <div className="success-div">
-          <div
-            style={{
-              backgroundImage: `url(${bgImage})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: '100%',
-            }}
-          >
-            <Header />
-            <div className="image-div">
-              <h1 className="movie-title">{title}</h1>
-              <div className="duration-div">
-                <p className="duration-para">{`${hour}h ${min}m`}</p>
-                <p className="duration-para">{adult ? 'A' : 'U/A'}</p>
-                <p className="duration-para">{`${day}${dateEnd} ${month} ${year}`}</p>
-              </div>
-              <p className="overview">{overview}</p>
-              <button type="button" className="movie-play">
-                Play
-              </button>
-            </div>
+      <div className="success-div">
+        <div
+          className="image-div"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: '100%',
+          }}
+        >
+          <h1 className="movie-title">{title}</h1>
+          <div className="duration-div">
+            <p className="duration-para">{`${hour}h ${min}m`}</p>
+            <p className="duration-para">{adult ? 'A' : 'U/A'}</p>
+            <p className="duration-para">{`${day}${dateEnd} ${month} ${year}`}</p>
           </div>
-          <div className="genres-div">
-            <div className="genres-sub-div">
-              <h1 className="genre-para">Genres</h1>
-              <ul>
-                {genres.map(eachGenre => (
-                  <li className="genre-item" key={eachGenre.id}>
-                    {eachGenre.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="genres-sub-div">
-              <h1 className="genre-para">Audio Available</h1>
-              <ul>
-                {spokenLanguages.map(eachLang => (
-                  <li className="genre-item" key={eachLang.id}>
-                    {eachLang.english_name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className="genres-sub-div">
-                <h1 className="genre-para">Rating Count</h1>
-                <p>{voteCount}</p>
-              </div>
-              <div className="genres-sub-div">
-                <h1 className="genre-para">Rating Average</h1>
-                <p>{voteAverage}</p>
-              </div>
-            </div>
-            <div>
-              <div className="genres-sub-div">
-                <h1 className="genre-para">Budget</h1>
-                <p>{budget}</p>
-              </div>
-              <div className="genres-sub-div">
-                <h1 className="genre-para">Release Date</h1>
-                <p>{releaseDate}</p>
-              </div>
-            </div>
-          </div>
-          <div className="similar-div">
-            <h1 className="similar-head">More like this</h1>
-            <ul className="similar-ul">
-              {similarMovies.map(eachMovie => (
-                <li key={eachMovie.id}>
-                  <Link to={`/movies/${eachMovie.id}`} target="blank">
-                    <img
-                      className="similar-image"
-                      src={eachMovie.poster_path}
-                      alt={eachMovie.title}
-                    />
-                  </Link>
+          <p className="overview">{overview}</p>
+          <button type="button" className="movie-play">
+            Play
+          </button>
+        </div>
+        <div className="genres-div">
+          <div className="genres-sub-div">
+            <h1 className="genre-para">Genres</h1>
+            <ul>
+              {genres.map(eachGenre => (
+                <li className="genre-item" key={eachGenre.id}>
+                  {eachGenre.name}
                 </li>
               ))}
             </ul>
           </div>
+          <div className="genres-sub-div">
+            <h1 className="genre-para">Audio Available</h1>
+            <ul>
+              {spokenLanguages.map(eachLang => (
+                <li className="genre-item" key={eachLang.id}>
+                  {eachLang.english_name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="genres-sub-div">
+              <h1 className="genre-para">Rating Count</h1>
+              <p>{voteCount}</p>
+            </div>
+            <div className="genres-sub-div">
+              <h1 className="genre-para">Rating Average</h1>
+              <p>{voteAverage}</p>
+            </div>
+          </div>
+          <div>
+            <div className="genres-sub-div">
+              <h1 className="genre-para">Budget</h1>
+              <p>{budget}</p>
+            </div>
+            <div className="genres-sub-div">
+              <h1 className="genre-para">Release Date</h1>
+              <p>{releaseDate}</p>
+            </div>
+          </div>
+        </div>
+        <div className="similar-div">
+          <h1 className="similar-head">More like this</h1>
+          <ul className="similar-ul">
+            {similarMovies.map(eachMovie => (
+              <li key={eachMovie.id}>
+                <Link to={`/movies/${eachMovie.id}`} target="blank">
+                  <img
+                    className="similar-image"
+                    src={eachMovie.poster_path}
+                    alt={eachMovie.title}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     )
@@ -242,10 +238,9 @@ class MovieItemDetails extends Component {
   render() {
     return (
       <div className="movie-div">
-        {this.renderMovie()}
-        <div className="movie-footer-div">
-          <Footer />
-        </div>
+        <Header />
+        <div>{this.renderMovie()}</div>
+        <Footer />
       </div>
     )
   }

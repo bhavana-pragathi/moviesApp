@@ -153,8 +153,14 @@ class Home extends Component {
     const {id, title, overView, backdropPath} = backdropData
     const bgImage = backdropPath
     return (
-      <div key={id} style={{backgroundImage: `url(${bgImage})`}}>
-        <Header />
+      <div
+        key={id}
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100%',
+        }}
+      >
         <div className="home-upper-div">
           <h1 className="home-head" key={title}>
             {title}
@@ -175,15 +181,18 @@ class Home extends Component {
     return (
       <div className="trending-div">
         <h1 className="home-success-para">Trending Now</h1>
+
         <Slider {...settings}>
           {trendingData.map(eachItem => {
             const {id, title, posterPath} = eachItem
             return (
-              <div className="list-item" key={id}>
-                <Link className="link-item" to={`/movies/${id}`}>
-                  <img className="li-img" src={posterPath} alt={title} />
-                </Link>
-              </div>
+              <ul className="list-items">
+                <li className="list-item" key={id}>
+                  <Link className="link-item" to={`/movies/${id}`}>
+                    <img className="li-img" src={posterPath} alt={title} />
+                  </Link>
+                </li>
+              </ul>
             )
           })}
         </Slider>
@@ -200,11 +209,13 @@ class Home extends Component {
           {originalData.map(eachItem => {
             const {id, title, posterPath} = eachItem
             return (
-              <div className="list-item" key={id}>
-                <Link className="link-item" to={`/movies/${id}`}>
-                  <img className="li-img" src={posterPath} alt={title} />
-                </Link>
-              </div>
+              <ul className="list-items">
+                <li className="list-item" key={id}>
+                  <Link className="link-item" to={`/movies/${id}`}>
+                    <img className="li-img" src={posterPath} alt={title} />
+                  </Link>
+                </li>
+              </ul>
             )
           })}
         </Slider>
@@ -330,6 +341,7 @@ class Home extends Component {
     }
     return (
       <div className="home-main-div">
+        <Header />
         <div className="home-upper-div">
           {this.renderBackdrop()}
           <div className="home-bottom-div">

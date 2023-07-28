@@ -5,10 +5,8 @@
   flex-direction: column;
   font-family: HK Grotesk;
 }
-.movie-footer-div {
-  margin-top: 60px;
-  align-self: center;
-  margin-bottom: 30px;
+.movie-success-div {
+  margin-bottom: 10px;
 }
 .failure-div {
   display: flex;
@@ -42,7 +40,7 @@
   display: flex;
   justify-content: space-between;
   margin-left: 45px;
-  margin-right: 65px;
+  margin-right: 100px;
   margin-top: 20px;
 }
 .genre-para {
@@ -61,9 +59,10 @@ ul {
   list-style-type: none;
 }
 .image-div {
-  height: 45vh;
+  height: 60vh;
   background-size: cover;
   padding-left: 80px;
+  margin-top: 20px;
 }
 .overview {
   width: 50%;
