@@ -2,6 +2,7 @@
   background-color: #000000;
   min-height: 100vh;
   font-family: HK Grotesk;
+  min-width: 100vw;
 }
 .account-content {
   background-color: #ffffff;
@@ -31,8 +32,13 @@
 }
 .ultra {
   border: 1px solid #1e293b;
-  font-size: 12px;
   height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 3px 3px 3px 3px;
+}
+.ultra-para {
+  font-size: 14px;
 }
 .premium-ultra {
   display: flex;

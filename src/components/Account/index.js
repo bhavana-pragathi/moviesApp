@@ -31,7 +31,9 @@ const Account = props => {
           <p className="account-para">Plan details</p>
           <div className="premium-ultra">
             <p className="premium">Premium</p>
-            <p className="ultra">Ultra HD</p>
+            <div className="ultra">
+              <p className="ultra-para">Ultra HD</p>
+            </div>
           </div>
         </div>
         <hr className="hr-line" />

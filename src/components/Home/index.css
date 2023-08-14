@@ -1,8 +1,9 @@
 .home-main-div {
-  min-height: 180px;
+  min-height: 210vh;
   font-family: HK Grotesk;
   background-color: #000000;
   background-size: cover;
+  min-width: 100vw;
 }
 .home-upper-div {
   height: 60vh;
@@ -90,4 +91,8 @@
 }
 .original-div {
   margin-bottom: 100px;
+}
+.top-rated-list {
+  list-style-type: none;
+  display: flex;
 }

@@ -50,6 +50,7 @@ class Home extends Component {
     backdropData: {},
     trendingData: [],
     originalData: [],
+    topRatedData: [],
     apiStatus: apiConstants.initial,
   }
 
@@ -57,6 +58,7 @@ class Home extends Component {
     this.getBackdropData()
     this.getTrendingData()
     this.getOriginalData()
+    this.getTopRatedData()
   }
 
   getBackdropData = async () => {
@@ -148,6 +150,35 @@ class Home extends Component {
     }
   }
 
+  getTopRatedData = async () => {
+    this.setState({apiStatus: apiConstants.inProgress})
+    const apiUrl = 'https://apis.ccbp.in/movies-app/top-rated-movies'
+    const jwtToken = Cookies.get('jwt_token')
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    }
+    const response = await fetch(apiUrl, options)
+    if (response.ok) {
+      const data = await response.json()
+      const updatedTopRatedData = data.results.map(eachItem => ({
+        backdropPath: eachItem.backdrop_path,
+        id: eachItem.id,
+        overView: eachItem.overview,
+        posterPath: eachItem.poster_path,
+        title: eachItem.title,
+      }))
+      this.setState({
+        topRatedData: updatedTopRatedData,
+        apiStatus: apiConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiConstants.failure})
+    }
+  }
+
   renderBackdropSuccessView = () => {
     const {backdropData} = this.state
     const {id, title, overView, backdropPath} = backdropData
@@ -184,18 +215,19 @@ class Home extends Component {
         <h1 className="home-success-para">Trending Now</h1>
 
         <Slider {...settings}>
-          {trendingData.map(eachItem => {
-            const {id, title, posterPath} = eachItem
-            return (
-              <ul className="list-items">
-                <li className="list-item" key={id}>
-                  <Link className="link-item" to={`/movies/${id}`}>
-                    <img className="li-img" src={posterPath} alt={title} />
-                  </Link>
-                </li>
-              </ul>
-            )
-          })}
+          {trendingData.map(eachItem => (
+            <ul className="list-items">
+              <li className="list-item" key={eachItem.id}>
+                <Link className="link-item" to={`/movies/${eachItem.id}`}>
+                  <img
+                    className="li-img"
+                    src={eachItem.posterPath}
+                    alt={eachItem.title}
+                  />
+                </Link>
+              </li>
+            </ul>
+          ))}
         </Slider>
       </div>
     )
@@ -207,19 +239,45 @@ class Home extends Component {
       <div className="original-div">
         <h1 className="home-success-para">Originals</h1>
         <Slider {...settings}>
-          {originalData.map(eachItem => {
-            const {id, title, posterPath} = eachItem
-            return (
-              <ul className="list-items">
-                <li className="list-item" key={id}>
-                  <Link className="link-item" to={`/movies/${id}`}>
-                    <img className="li-img" src={posterPath} alt={title} />
-                  </Link>
-                </li>
-              </ul>
-            )
-          })}
+          {originalData.map(eachItem => (
+            <ul className="list-items">
+              <li className="list-item" key={eachItem.id}>
+                <Link className="link-item" to={`/movies/${eachItem.id}`}>
+                  <img
+                    className="li-img"
+                    src={eachItem.posterPath}
+                    alt={eachItem.title}
+                  />
+                </Link>
+              </li>
+            </ul>
+          ))}
         </Slider>
+      </div>
+    )
+  }
+
+  renderTopRatedSuccessView = () => {
+    const {topRatedData} = this.state
+    return (
+      <div className="top-rated-div">
+        <h1 className="home-success-para">Top Rated</h1>
+        <ul className="top-rated-list">
+          {topRatedData.slice(Math.floor(Math.random()), 9).map(
+            (eachItem, i) =>
+              i < 2 && (
+                <Link to={`/movies/${eachItem.id}`} key={eachItem.id}>
+                  <li className="list-item" key={eachItem.id}>
+                    <img
+                      className="li-img"
+                      src={eachItem.posterPath}
+                      alt={eachItem.title}
+                    />
+                  </li>
+                </Link>
+              ),
+          )}
+        </ul>
       </div>
     )
   }
@@ -281,6 +339,23 @@ class Home extends Component {
     </div>
   )
 
+  renderTopRatedFailureView = () => (
+    <div>
+      <img
+        src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690264009/alert-triangle_wrkrgq.png"
+        alt="failure view"
+      />
+      <p className="failure-para">Something went wrong. Please try again</p>
+      <button
+        className="retry-button"
+        type="button"
+        onClick={this.onRetryTopRated}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
   onRetryBackdrop = () => {
     this.getBackdropData()
   }
@@ -291,6 +366,10 @@ class Home extends Component {
 
   onRetryOriginal = () => {
     this.getOriginalData()
+  }
+
+  onRetryTopRated = () => {
+    this.getTopRatedData()
   }
 
   renderBackdrop = () => {
@@ -335,6 +414,20 @@ class Home extends Component {
     }
   }
 
+  renderTopRated = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiConstants.success:
+        return this.renderTopRatedSuccessView()
+      case apiConstants.failure:
+        return this.renderTopRatedFailureView()
+      case apiConstants.inProgress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
+  }
+
   render() {
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken === undefined) {
@@ -347,6 +440,7 @@ class Home extends Component {
           {this.renderBackdrop()}
           <div className="home-bottom-div">
             {this.renderTrending()}
+            {this.renderTopRated()}
             {this.renderOriginals()}
             <Footer />
           </div>
