@@ -5,7 +5,7 @@
   background-size: cover;
 }
 .home-upper-div {
-  height: 45vh;
+  height: 60vh;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,7 @@
   font-weight: 600;
   color: #ffffff;
   padding-left: 80px;
+  padding-top: 50px;
 }
 .home-para {
   font-size: 18px;
@@ -47,7 +48,7 @@
 .list-items {
   display: flex;
   list-style-type: none;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .list-item {
   margin-right: 20px;
@@ -55,29 +56,14 @@
 .li-img {
   height: 150px;
   width: 250px;
-  margin-left: 20px;
   border-radius: 8px;
-  margin-right: 20px;
-  margin-right: 10px;
 }
 
-.slick-next:before {
-  color: #ffffff;
-}
-.slick-next:after {
-  color: #ffffff;
-}
 .home-bottom-div {
   background-color: #000000;
   padding-left: 60px;
   padding-right: 60px;
   min-height: 100vh;
-}
-.home-footer-div {
-  margin-top: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .loader-container {
   display: flex;
@@ -101,4 +87,7 @@
   margin-left: 80px;
   padding: 8px, 24px, 8px, 24px;
   border: none;
+}
+.original-div {
+  margin-bottom: 100px;
 }

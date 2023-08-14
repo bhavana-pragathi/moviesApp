@@ -134,20 +134,20 @@ class MovieItemDetails extends Component {
         <div className="genres-div">
           <div className="genres-sub-div">
             <h1 className="genre-para">Genres</h1>
-            <ul>
+            <ul className="ul-item">
               {genres.map(eachGenre => (
                 <li className="genre-item" key={eachGenre.id}>
-                  {eachGenre.name}
+                  <p className="names">{eachGenre.name}</p>
                 </li>
               ))}
             </ul>
           </div>
           <div className="genres-sub-div">
             <h1 className="genre-para">Audio Available</h1>
-            <ul>
+            <ul className="ul-item">
               {spokenLanguages.map(eachLang => (
                 <li className="genre-item" key={eachLang.id}>
-                  {eachLang.english_name}
+                  <p className="names">{eachLang.english_name}</p>
                 </li>
               ))}
             </ul>
@@ -155,21 +155,21 @@ class MovieItemDetails extends Component {
           <div>
             <div className="genres-sub-div">
               <h1 className="genre-para">Rating Count</h1>
-              <p>{voteCount}</p>
+              <p className="names">{voteCount}</p>
             </div>
             <div className="genres-sub-div">
               <h1 className="genre-para">Rating Average</h1>
-              <p>{voteAverage}</p>
+              <p className="names">{voteAverage}</p>
             </div>
           </div>
           <div>
             <div className="genres-sub-div">
               <h1 className="genre-para">Budget</h1>
-              <p>{budget}</p>
+              <p className="names">{budget}</p>
             </div>
             <div className="genres-sub-div">
               <h1 className="genre-para">Release Date</h1>
-              <p>{releaseDate}</p>
+              <p className="names">{releaseDate}</p>
             </div>
           </div>
         </div>

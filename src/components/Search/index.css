@@ -79,7 +79,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 80px;
+  margin-bottom: -230px;
 }
 .success-div {
   margin-bottom: 300px;

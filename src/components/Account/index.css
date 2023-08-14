@@ -5,11 +5,12 @@
 }
 .account-content {
   background-color: #ffffff;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
   padding-left: 90px;
   padding-top: 20px;
   padding-bottom: 60px;
   padding-right: 90px;
+  height: 70vh;
 }
 
 .hr-line {
@@ -41,8 +42,13 @@
   border: none;
   background-color: #e50914;
   color: #ffffff;
-  height: 25px;
+  height: 30px;
+  width: 70px;
   border-radius: 3px;
   font-size: 12px;
+  text-align: center;
+  margin-top: 30px;
+}
+.button-div {
   text-align: center;
 }

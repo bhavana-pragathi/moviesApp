@@ -1,12 +1,9 @@
 .movie-div {
   background-color: #000000;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: HK Grotesk;
-}
-.movie-success-div {
-  margin-bottom: 10px;
+  padding-bottom: 30px;
 }
 .failure-div {
   display: flex;
@@ -35,13 +32,12 @@
 .success-div {
   color: #ffffff;
 }
-
 .genres-div {
   display: flex;
   justify-content: space-between;
-  margin-left: 45px;
-  margin-right: 100px;
   margin-top: 20px;
+  margin-left: 80px;
+  margin-right: 120px;
 }
 .genre-para {
   color: #94a3b8;
@@ -49,20 +45,22 @@
 }
 .genre-item {
   margin-bottom: 10px;
+  margin-left: -35px;
 }
 .genres-sub-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
-ul {
+.ul-item {
   list-style-type: none;
 }
 .image-div {
   height: 60vh;
   background-size: cover;
   padding-left: 80px;
-  margin-top: 20px;
+  padding-top: 40px;
+  padding-bottom: -60px;
 }
 .overview {
   width: 50%;
@@ -98,8 +96,12 @@ ul {
 }
 .similar-div {
   margin-left: 40px;
+  margin-bottom: -230px;
 }
 .similar-head {
   margin-left: 40px;
   font-size: 25px;
+}
+.names {
+  color: #ffffff;
 }

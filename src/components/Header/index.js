@@ -15,11 +15,13 @@ class Header extends Component {
     return (
       <nav className="header-nav">
         <div className="header-logo-div">
-          <img
-            className="header-logo"
-            src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690009709/urzfzliigozcxhv3deem.png"
-            alt="website logo"
-          />
+          <Link to="/">
+            <img
+              className="header-logo"
+              src="https://res.cloudinary.com/dcnuotlhb/image/upload/v1690009709/urzfzliigozcxhv3deem.png"
+              alt="website logo"
+            />
+          </Link>
           <Link className="link" to="/">
             <p className="header-para">Home</p>
           </Link>

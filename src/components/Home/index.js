@@ -159,6 +159,7 @@ class Home extends Component {
           backgroundImage: `url(${bgImage})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: '100%',
+          height: '100%',
         }}
       >
         <div className="home-upper-div">
@@ -347,9 +348,7 @@ class Home extends Component {
           <div className="home-bottom-div">
             {this.renderTrending()}
             {this.renderOriginals()}
-            <div className="home-footer-div">
-              <Footer />
-            </div>
+            <Footer />
           </div>
         </div>
       </div>

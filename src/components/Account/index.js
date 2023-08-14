@@ -35,9 +35,11 @@ const Account = props => {
           </div>
         </div>
         <hr className="hr-line" />
-        <button className="logout-button" type="button" onClick={onLogout}>
-          Logout
-        </button>
+        <div className="button-div">
+          <button className="logout-button" type="button" onClick={onLogout}>
+            Logout
+          </button>
+        </div>
       </div>
       <Footer />
     </div>

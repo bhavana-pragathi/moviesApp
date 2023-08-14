@@ -53,16 +53,17 @@ class Popular extends Component {
     const {popularData} = this.state
     return (
       <ul className="popular-list-items">
-        {popularData.map(eachItem => {
-          const {id, title, posterPath} = eachItem
-          return (
-            <li className="popular-item" key={id}>
-              <Link className="link-item" to={`/movies/${id}`}>
-                <img className="popular-images" src={posterPath} alt={title} />
-              </Link>
-            </li>
-          )
-        })}
+        {popularData.map(eachItem => (
+          <li className="popular-item" key={eachItem.id}>
+            <Link className="link-item" to={`/movies/${eachItem.id}`}>
+              <img
+                className="popular-images"
+                src={eachItem.posterPath}
+                alt={eachItem.title}
+              />
+            </Link>
+          </li>
+        ))}
       </ul>
     )
   }
@@ -81,11 +82,19 @@ class Popular extends Component {
         alt="failure view"
       />
       <p className="failure-para">Something went wrong. Please try again</p>
-      <button className="retry-button" type="button">
+      <button
+        onClick={this.onRetryPopular}
+        className="retry-button"
+        type="button"
+      >
         Try Again
       </button>
     </div>
   )
+
+  onRetryPopular = () => {
+    this.getPopularData()
+  }
 
   renderPopular = () => {
     const {apiStatus} = this.state

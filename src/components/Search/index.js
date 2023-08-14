@@ -68,20 +68,17 @@ class Search extends Component {
           </div>
         ) : (
           <ul className="popular-list-items">
-            {searchResults.map(eachItem => {
-              const {id, title, posterPath} = eachItem
-              return (
-                <li className="popular-item" key={id}>
-                  <Link className="link-item" to={`/movies/${id}`}>
-                    <img
-                      className="popular-images"
-                      src={posterPath}
-                      alt={title}
-                    />
-                  </Link>
-                </li>
-              )
-            })}
+            {searchResults.map(eachItem => (
+              <li className="popular-item" key={eachItem.id}>
+                <Link className="link-item" to={`/movies/${eachItem.id}`}>
+                  <img
+                    className="popular-images"
+                    src={eachItem.posterPath}
+                    alt={eachItem.title}
+                  />
+                </Link>
+              </li>
+            ))}
           </ul>
         )}
       </div>
@@ -117,11 +114,19 @@ class Search extends Component {
         alt="failure view"
       />
       <p className="failure-para">Something went wrong. Please try again</p>
-      <button className="retry-button" type="button">
+      <button
+        onClick={this.onRetrySuccess}
+        className="retry-button"
+        type="button"
+      >
         Try Again
       </button>
     </div>
   )
+
+  onRetrySuccess = () => {
+    this.getOnSearch()
+  }
 
   renderSearch = () => {
     const {apiStatus} = this.state
